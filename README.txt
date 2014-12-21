@@ -1,3 +1,6 @@
+For the latest Scratch Analyzer information, please visit:
+http://scratchanalyzer.keotek.com/
+
 How to Compile Scratch Analyzer
 
 Scratch Analyzer is perhaps easiest compiled by establishing a Java project in Eclipse as shown here.  One configuration required is the specification of the zip4j jar in the build path, as Scratch Extractor uses this component to decompress the input .sb2 files.  This path can be set by selecting Project -> Properties in Eclipse.  All should compile properly as-is; however, note that Scratch Traverser has a dependency on a user-supplied class, Operator.  An example Operator implementation is provided in the codebase for Scratch Analyzer, but any compiled Operator class with a method with the appropriate signature (public static void operate(Tree<Block> project, int sequence, StringBuilder operateOut)) should suffice.  As noted in the following section, the path to the Operator class is specified as an input paramater to Scratch Traverser.
@@ -23,3 +26,5 @@ java -classpath C:\Users\jbender\Documents\docs\misc\cs\_bda\fp\scratch\analysis
 Scratch Traverser:
 Usage: java -classpath <...> utils.ScratchTraverser <Path to extracted .se files> <Output Path> <Output File> <Operator Path>
 java -classpath C:\Users\jbender\Documents\docs\misc\cs\_bda\fp\scratch\analysis\scratch_analyzer\bin;C:\Users\jbender\Documents\docs\misc\cs\_bda\fp\download\zip4j_1.3.2.jar utils.ScratchTraverser c:\Users\jbender\Documents\docs\misc\cs\_bda\fp\scratch\analysis\data\s\extracted c:\Users\jbender\Documents\docs\misc\cs\_bda\fp\scratch\analysis\data\s\traversed traversed.cypher c:\Users\jbender\Documents\docs\misc\cs\_bda\fp\scratch\analysis
+
+Copyright 2014 Jeff Bender
