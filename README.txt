@@ -26,3 +26,5 @@ java -classpath C:\Users\jbender\Documents\docs\misc\cs\_bda\fp\scratch\analysis
 Scratch Traverser:
 Usage: java -classpath <...> utils.ScratchTraverser <Path to extracted .se files> <Output Path> <Output File> <Operator Path>
 java -classpath C:\Users\jbender\Documents\docs\misc\cs\_bda\fp\scratch\analysis\scratch_analyzer\bin;C:\Users\jbender\Documents\docs\misc\cs\_bda\fp\download\zip4j_1.3.2.jar utils.ScratchTraverser c:\Users\jbender\Documents\docs\misc\cs\_bda\fp\scratch\analysis\data\s\extracted c:\Users\jbender\Documents\docs\misc\cs\_bda\fp\scratch\analysis\data\s\traversed traversed.cypher c:\Users\jbender\Documents\docs\misc\cs\_bda\fp\scratch\analysis
+
+Copyright 2014 Jeff Bender
