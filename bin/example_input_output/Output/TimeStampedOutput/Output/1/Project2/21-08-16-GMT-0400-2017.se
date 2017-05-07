@@ -1,0 +1,24 @@
+<<Object Stage>>
+		<<Object Sprite1>>
+				whenGreenFlag
+				doRepeat
+				wait:elapsed:from:
+				doIfElse
+				|
+				<
+				%
+				timestamp
+				=
+				timeAndDate
+				putPenDown
+				penColor:
+				heading:
+				forward:
+				changePenSizeBy:
+				turnRight:
+				changeXposBy:
+				wait:elapsed:from:
+				doAsk
+				noteOn:duration:elapsed:from:
+				rest:elapsed:from:
+				putPenUp
