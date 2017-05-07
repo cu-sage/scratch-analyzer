@@ -1,0 +1,9 @@
+<<Object Stage>>
+		<<Object Sprite1>>
+				whenKeyPressed
+				doIfElse
+				<
+				randomFrom:to:
+				doAsk
+				doRepeat
+				say:duration:elapsed:from:

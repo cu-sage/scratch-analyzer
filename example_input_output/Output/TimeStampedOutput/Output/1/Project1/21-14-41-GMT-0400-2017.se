@@ -1,0 +1,17 @@
+<<Object Stage>>
+		<<Object Sprite1>>
+				whenClicked
+				doUntil
+				think:duration:elapsed:from:
+				penColor:
+				putPenDown
+				doIfElse
+				heading:
+				gotoX:y:
+				penColor:
+				putPenUp
+				doWaitUntil
+				not
+				=
+				concatenate:with:
+				timeAndDate

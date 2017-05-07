@@ -1,0 +1,25 @@
+<<Object Stage>>
+		<<Object Sprite1>>
+				whenKeyPressed
+				doIfElse
+				<
+				randomFrom:to:
+				doAsk
+				doRepeat
+				forward:
+				say:duration:elapsed:from:
+				gotoX:y:
+				wait:elapsed:from:
+				xpos:
+				+
+				letter:of:
+				instrument:
+				doIf
+				&
+				<
+				not
+				=
+				noteOn:duration:elapsed:from:
+				rest:elapsed:from:
+				playSound:
+				not
