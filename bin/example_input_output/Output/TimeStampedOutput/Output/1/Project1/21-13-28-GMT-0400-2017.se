@@ -1,9 +1,0 @@
-<<Object Stage>>
-		<<Object Sprite1>>
-				whenClicked
-				doUntil
-				penColor:
-				putPenDown
-				heading:
-				gotoX:y:
-				doWaitUntil

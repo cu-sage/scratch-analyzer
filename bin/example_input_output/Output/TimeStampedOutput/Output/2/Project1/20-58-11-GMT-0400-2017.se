@@ -1,6 +1,0 @@
-<<Object Stage>>
-		<<Object Sprite1>>
-				whenKeyPressed
-				doIfElse
-				doAsk
-				doRepeat
