@@ -8,6 +8,7 @@ package utils;
 public class Block {
 	private String objName;
 	private String blockName;
+	private String id;
 	
 	private static final String SE_OBJ_OPEN = "<<";
 	private static final String SE_OBJ_CLOSE = ">>";
@@ -21,6 +22,20 @@ public class Block {
 	{
 		this.objName = objectName;
 		this.blockName = blockName;
+	}
+	
+	public Block(String objectName, String blockName, String id) {
+		this.objName = objectName;
+		this.blockName = blockName;
+		this.id = id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	public String getId() {
+		return this.id != null ? id: null;
 	}
 	
 	public void setObjectName(String objName) {

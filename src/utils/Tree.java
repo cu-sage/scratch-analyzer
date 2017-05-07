@@ -26,7 +26,7 @@ import java.util.HashMap;
   *          Object's type in the tree.
   * Edited and expanded by JBender for use in Scratch Analyzer
 */
-public class Tree<T> {
+public class Tree<T> implements Comparable<Tree<T>> {
 
   private T head;
 
@@ -88,20 +88,22 @@ public class Tree<T> {
     return parent;
   }
 
-  public Collection<T> getSuccessors(T root) {
-    Collection<T> successors = new ArrayList<T>();
-    Tree<T> tree = getTree(root);
-    if (null != tree) {
-      for (Tree<T> leaf : tree.leafs) {
-        successors.add(leaf.head);
-      }
-    }
-    return successors;
-  }
 
+ public ArrayList<T> getSuccessors(T root) {
+	  ArrayList<T> successors = new ArrayList<T>();
+	    Tree<T> tree = getTree(root);
+	    if (null != tree) {
+	      for (Tree<T> leaf : tree.leafs) {
+	        successors.add(leaf.head);
+	      }
+	    }
+	    return successors;
+  }
+ 
   public Collection<Tree<T>> getSubTrees() {
     return leafs;
   }
+  
 
   public static <T> Collection<T> getSuccessors(T of, Collection<Tree<T>> in) {
     for (Tree<T> tree : in) {
@@ -135,4 +137,12 @@ public class Tree<T> {
     }
     return s;
   }
+  
+  
+
+@Override
+public int compareTo(Tree<T> o) {
+	
+	return 0;
+}
 }
