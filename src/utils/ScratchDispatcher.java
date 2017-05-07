@@ -83,8 +83,9 @@ public class ScratchDispatcher {
 		if (head!=null && head.getBlockName()!=null)
 			updateAggregate(blockAggregate, head.getBlockName());
 		Collection<Block> blocks = project.getSuccessors(head);
-		for (Block block : blocks)
+		for (Block block : blocks) 
 			aggregateProject(project.getTree(block), blockAggregate);
+		
 	}
 	
 	/**

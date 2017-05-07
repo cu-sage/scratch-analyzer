@@ -1,5 +1,8 @@
 package utils;
 
+import utils.Block;
+import utils.Tree;
+
 /**
  * 
  * @author JBender
