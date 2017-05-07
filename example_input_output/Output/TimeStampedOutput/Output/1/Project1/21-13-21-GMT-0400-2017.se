@@ -1,0 +1,7 @@
+<<Object Stage>>
+		<<Object Sprite1>>
+				whenClicked
+				doUntil
+				penColor:
+				putPenDown
+				doWaitUntil
