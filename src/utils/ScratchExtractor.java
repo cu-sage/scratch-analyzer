@@ -649,16 +649,51 @@ public class ScratchExtractor {
 	 */
 	public static void analyzeData(Path dir) throws IOException {
 		ReadTree file;
+		Writer writer = makeFile(dir);
 		for(int user : userTimeStampedProjects.keySet()) {
 
 			for(String project : userTimeStampedProjects.get(user).keySet()) {
+				
 				Path output = Paths.get(dir.toString(),"/",Integer.toString(user),"/",project);
 				Files.createDirectories(output);
 				file = new ReadTree(output,userTimeStampedProjects.get(user).get(project));
 				file.aggregateTimeStampedProjects();
+				StatisticalData dataForThisUser = file.getStatisticalData();
+				writer = writeForThisProject(user,project,dataForThisUser,writer);
 			}
 		}
+		writer.close();
 	}
+	
+	/*
+	 Makes the basic skeletal file for the statistical analysis
+	 */
+	public static Writer makeFile(Path dir) {
+		Writer writer = null;
+		try {
+			writer = new BufferedWriter(new OutputStreamWriter(
+					new FileOutputStream(Paths.get(dir.toString(), "StatiscalAnalysis.csv").toString()), "utf-8"));
+			writer.write("UserId" + "," + "ProjectName" + "," + "Mean" + "," + "StandardDeviation"+ " \n");
+		}
+		catch(IOException e) {
+			System.out.println(e);
+		}
+		return writer;
+	}
+	/*
+	 * Writes a per user per project statistical analysis to our output file
+	 */
+	public static Writer writeForThisProject(int user, String project, StatisticalData data,Writer writer) {
+		try {
+			
+			writer.write(user + "," + project + "," + data.getMean() + "," + data.getStandardDeviation()+ " \n");
+		}
+		catch(IOException e) {
+			System.out.println(e);
+		}
+		return writer;
+	}
+	
 
 	/**
 	 * Print usage instructions

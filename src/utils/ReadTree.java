@@ -1,5 +1,7 @@
 /*
+ * Sambhav Anand
  * Adds functionality to Jeff Bender's ScratchExtractor and builds on ScratchDispatcher 
+ * Make sure to import apache.commons.math3 jar file from the required files folder
  */
 package utils;
 
@@ -8,15 +10,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.TreeMap;
+import java.util.List;
+
+import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
+
 
 public class ReadTree {
 	private Path outputDir;
@@ -198,6 +200,19 @@ public class ReadTree {
 			}
 		}
 		return project;
+	}
+	
+	public StatisticalData getStatisticalData() {
+		Collection<Integer> values = changesPerBlock.values();
+		ArrayList<Integer> valuesAsList = new ArrayList<>();
+		valuesAsList.addAll(values);
+		DescriptiveStatistics stats = new DescriptiveStatistics();
+		
+		for(int i=0;i<values.size();i++) {
+			stats.addValue((double) valuesAsList.get(i));
+		}
+		
+		return new StatisticalData(stats.getMean(),stats.getStandardDeviation(),valuesAsList);
 	}
 
 

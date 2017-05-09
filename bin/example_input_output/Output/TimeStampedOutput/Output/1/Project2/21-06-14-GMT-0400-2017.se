@@ -1,0 +1,8 @@
+<<Object Stage>>
+		<<Object Sprite1>>
+				whenGreenFlag
+				doRepeat
+				wait:elapsed:from:
+				doIfElse
+				|
+				<
