@@ -3,7 +3,6 @@ http://scratchanalyzer.keotek.com/
 
 How to Compile Scratch Analyzer
 
-
 Scratch Analyzer is perhaps easiest compiled by establishing a Java project in Eclipse.  
 One configuration required is the specification of the zip4j jar in the build path, 
 as Scratch Extractor uses this component to decompress the input .sb2 files.  
