@@ -27,10 +27,9 @@ public class ScratchDispatcher {
 
 	private Path seDir;
 	private Path outputDir;
-	private TreeMap<Integer, ArrayList<Tree<Block>>> userProjects; //tree map of user ID - projects (tree of blocks)
+	private TreeMap<Integer, ArrayList<Tree<Block>>> userProjects; 
 	private TreeMap<Integer, TreeMap<String, Integer>> userBlocks;
-	//map of user ID - Project ID - BlockName - Counts
-	private TreeMap<Integer, TreeMap<Integer, TreeMap<String, Integer>>> userBlocksPerProject;
+	private TreeMap<Integer, TreeMap<Integer, TreeMap<String, Integer>>> userBlocksPerProject; //map of userID-ProjectID-BlockName-Counts
 	private TreeMap<String, Integer> numericBlocks;
 	private static final String OUTPUT_FILE = "dispatch_text.csv";
 	private static final String OUTPUT_NUMERIC = "dispatch_numeric.csv";
@@ -83,7 +82,11 @@ public class ScratchDispatcher {
 	}
 	
 	/**
-	 * Aggregate the blocks used by each user in all projects
+	 * Duplicates functionality of aggregateUserBlocks, but also keeps track of projectID in addition to userID.
+	 * ProjectID currently depends on the order of projects ScratchExtractor extracts. UserID still depends on 
+	 * directory.
+	 * @author Tim K. 
+	 * POSTCONDITION: userBlocksPerProject gets a map containing block names with their counts according to User and Project ID. 
 	 */
 	private void aggregateUserBlocksPerProject() {
 		Set<Entry<Integer, ArrayList<Tree<Block>>>> set = userProjects.entrySet(); //tree of projects into sets
@@ -93,7 +96,7 @@ public class ScratchDispatcher {
 		//iterate through each tree of projects/user
 		while (iterator.hasNext())
 		{
-			int projectID = 1;
+			int projectID = 1; //resets project ID
 			userMapProject = new TreeMap<Integer, TreeMap<String, Integer>>(); //map of projects the user has
 			Map.Entry<Integer, ArrayList<Tree<Block>>> me = (Map.Entry<Integer, ArrayList<Tree<Block>>>)iterator.next(); //returns a tree of projects
 			ArrayList<Tree<Block>> al = me.getValue(); //get a list of projects
@@ -142,6 +145,8 @@ public class ScratchDispatcher {
 	 * dispatch_numeric.csv format: userID, blockID, count
 	 * dispatch_lookup.csv format: blockID, blockName
 	 * dispatch_text.csv format: userID, blockName, count
+	 * (Tim K.) Outputs block count for each user by project to a CSV file:
+	 * dispatch_perProject.csv format: userID, projectID, blockName, count
 	 */
 	private void writeAggregates() throws IOException {
 		Writer writer = null;
@@ -188,7 +193,7 @@ public class ScratchDispatcher {
 				Map.Entry<String, Integer> meNum = (Map.Entry<String, Integer>)iNum.next();
 				writerLkup.write(meNum.getValue() + "," + meNum.getKey() + "\n");
 			}
-			//PER PROJECT 
+			//(TIM K.) writer function for dispatch_perProject
 			int userID_PP = 0;
 			int projectID_PP = 0;
 			String blockNamePP = "";
@@ -237,7 +242,7 @@ public class ScratchDispatcher {
 	public void dispatch() throws IOException {
 		IOUtils.LoadSEDirectory(seDir, userProjects); //sePath into userProjects
 		aggregateUserBlocks();
-		aggregateUserBlocksPerProject();;
+		aggregateUserBlocksPerProject(); //overload for added functionality
 		writeAggregates();
 	}
 	
