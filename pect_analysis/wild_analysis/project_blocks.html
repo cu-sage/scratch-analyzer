@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)https://llk.media.mit.edu/scratch-dataset/project_blocks.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <link href="./project_blocks_files/style.css" rel="stylesheet" type="text/css">
+ <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head>
+
+<body><h1><em>project_blocks</em> Table</h1>
+
+<h2>Overview</h2>
+
+<p>Each row in this table represents a <a href="https://llk.media.mit.edu/scratch-dataset/projects.html">project</a> shared on the Scratch website at the point of data collection. Each column of this row represents the frequency counts of each block type for a particular project.  The value of each cell represents the number of times a particular block is used in a particular project.</p>
+
+<p>Projects use visual programming blocks to determine what projects do. Each block was stored internally as a token and each block could be used zero or more times.</p>
+
+<h2>Description of Fields</h2>
+
+<p>This table includes 1,925,606 observations. Each row of this table corresponds to a single project.</p>
+
+<p>Blocks were organized in eight visible categories that included "looks" (i.e. blocks that let users change the look of a sprite),  "sensing" (e.g. blocks used to detect colors and mouse position), "operators' (e.g. blocks for arithmetic operations).</p>
+
+<p>The description column tries to match the way the block was rendered in the Scratch user interface. Blocks that end with "_" are blocks that take an argument. Those without a description are experimental or obsolete blocks.</p>
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Variable </th>
+   <th style="text-align:left;"> Type </th>
+   <th style="text-align:left;"> Description </th>
+   <th style="text-align:left;"> Category </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> project_id </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> Unique identifier for the project (see the <a href="https://llk.media.mit.edu/scratch-dataset/projects.html">projects table</a>). </td>
+   <td style="text-align:left;"> N/A </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> scratchcomment </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> block used to leave comments </td>
+   <td style="text-align:left;"> comment </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> keyeventhatmorph </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> when_keypressed </td>
+   <td style="text-align:left;"> control </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> eventhatmorph_startclicked </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> whengreenflagclicked </td>
+   <td style="text-align:left;"> control </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> eventhatmorph </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> whenIreceive_ </td>
+   <td style="text-align:left;"> control </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> mouseclickeventhatmorph </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> when_clicked </td>
+   <td style="text-align:left;"> control </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> whenhatblockmorph </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> whenIreceive_ </td>
+   <td style="text-align:left;"> control </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> and_operator </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> and </td>
+   <td style="text-align:left;"> operators </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> multiply_operator </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> * </td>
+   <td style="text-align:left;"> operators </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> add_operator </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> + </td>
+   <td style="text-align:left;"> operators </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> subtract_operator </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> - </td>
+   <td style="text-align:left;"> operators </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> divide_operator </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> / </td>
+   <td style="text-align:left;"> operators </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> islessthan </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> &lt; </td>
+   <td style="text-align:left;"> operators </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> isequalto </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> "=" </td>
+   <td style="text-align:left;"> operators </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> isgreaterthan </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> &gt; </td>
+   <td style="text-align:left;"> operators </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> mod_operator </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> mod </td>
+   <td style="text-align:left;"> operators </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> or_operator </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> or </td>
+   <td style="text-align:left;"> operators </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> abs </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> abs </td>
+   <td style="text-align:left;"> operators </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> allmotorsoff </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> motor </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> allmotorson </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> motor </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> answer </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> answer </td>
+   <td style="text-align:left;"> sensing </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> append_tolist </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> add_to_ </td>
+   <td style="text-align:left;"> list </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> backgroundindex </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> background# </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> bounceoffedge </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> ifonedge_bounce </td>
+   <td style="text-align:left;"> motion </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> broadcast </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> broadcast_ </td>
+   <td style="text-align:left;"> control </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changebackgroundindexby </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changeblurby </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changebrightnessshiftby </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changecostumeindexby </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changefisheyeby </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changegraphiceffect.by </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> change_effectby_ </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changehueshiftby </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changemosaiccountby </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changepenhueby </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> changepencolorby_ </td>
+   <td style="text-align:left;"> pen </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changepenshadeby </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> changepenshadeby_ </td>
+   <td style="text-align:left;"> pen </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changepensizeby </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> changepensizeby_ </td>
+   <td style="text-align:left;"> pen </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changepixelatecountby </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changepointillizesizeby </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changesaturationshiftby </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changesizeby </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> changesizeby_ </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changestretchby </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changetempoby </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> sound </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changevarby </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> change_by_ </td>
+   <td style="text-align:left;"> variables </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changevisibilityby </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changevolumeby </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> changevolumeby_ </td>
+   <td style="text-align:left;"> sound </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changewaterrippleby </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changewhirlby </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changexposby </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> changexby_ </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> changeyposby </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> changeyby_ </td>
+   <td style="text-align:left;"> motion </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> clearpentrails </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> clear </td>
+   <td style="text-align:left;"> pen </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> color_sees </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> color_istouching_ </td>
+   <td style="text-align:left;"> sensing </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> cometofront </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> gotofront </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> comment </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> annotation widget to leave comments </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> computefunction_of </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> _of_ </td>
+   <td style="text-align:left;"> operators </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> concatenate_with </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> contentsoflist </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> contentsoflist_ </td>
+   <td style="text-align:left;"> list </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> costumeindex </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> deletelineoflist </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> delete_of_ </td>
+   <td style="text-align:left;"> list </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> distanceto </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> distanceto_ </td>
+   <td style="text-align:left;"> sensing </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> doask </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> dobroadcastandwait </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> broadcast_andwait </td>
+   <td style="text-align:left;"> control </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> doforever </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> forever </td>
+   <td style="text-align:left;"> control </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> doforeverif </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> foreverif_ </td>
+   <td style="text-align:left;"> control </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> doif </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> if_ </td>
+   <td style="text-align:left;"> control </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> doifelse </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> if_else_ </td>
+   <td style="text-align:left;"> control </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> doplaysoundandwait </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> playsound_untildone </td>
+   <td style="text-align:left;"> sound </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> dorepeat </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> repeat_ </td>
+   <td style="text-align:left;"> control </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> doreturn </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> stopscript </td>
+   <td style="text-align:left;"> control </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> dountil </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> repeatuntil_ </td>
+   <td style="text-align:left;"> control </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> dowaituntil </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> waituntil_ </td>
+   <td style="text-align:left;"> control </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> drum_duration_elapsed_from </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> playdrum_for_beats </td>
+   <td style="text-align:left;"> sound </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> filterreset </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> cleargraphiceffects </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> forward </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> move_steps </td>
+   <td style="text-align:left;"> motion </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> getattribute_of </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> _of_ (sensing) </td>
+   <td style="text-align:left;"> sensing </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> getline_of_list </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> item_of_ </td>
+   <td style="text-align:left;"> list </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> glidesecs_tox_y_elapsed_from </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> glide_secsto </td>
+   <td style="text-align:left;"> motion </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> gobackbylayers </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> goback_layers </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> gotospriteormouse </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> goto_ </td>
+   <td style="text-align:left;"> motion </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> gotox_y </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> goto </td>
+   <td style="text-align:left;"> motion </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> gotox_y_duration_elapsed_from </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> heading </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> direction </td>
+   <td style="text-align:left;"> motion </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> point_in_direction </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> pointindirection_ </td>
+   <td style="text-align:left;"> motion </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> hide </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> hide </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> hidevariable </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> hidevariable_ </td>
+   <td style="text-align:left;"> variables </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> insert_at_of_list </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> insert_at_of_ </td>
+   <td style="text-align:left;"> list </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> isloud </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> loud? </td>
+   <td style="text-align:left;"> sensing </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> keypressed </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> key_pressed? </td>
+   <td style="text-align:left;"> sensing </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> letter_of </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> linecountoflist </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> lengthof_ </td>
+   <td style="text-align:left;"> list </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> list_contains </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> list </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> looklike </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> switchtocostume_ </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> midiinstrument </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> setinstrumentto_ </td>
+   <td style="text-align:left;"> sound </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> motoronfor_elapsed_from </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> motor </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> mousepressed </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> mousedown? </td>
+   <td style="text-align:left;"> sensing </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> mousex </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> mousex </td>
+   <td style="text-align:left;"> sensing </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> mousey </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> mousey </td>
+   <td style="text-align:left;"> sensing </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> nextbackground </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> nextbackground </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> nextcostume </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> nextbackground </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> not </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> operators </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> note_on_duration_elapsed_from </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> playnote_for_beats </td>
+   <td style="text-align:left;"> sound </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> pencolor </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> setpencolorto_ </td>
+   <td style="text-align:left;"> pen </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> pensize </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> setpensizeto_ </td>
+   <td style="text-align:left;"> pen </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> playsound </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> playsound_ </td>
+   <td style="text-align:left;"> sound </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> pointtowards </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> pointtowards_ </td>
+   <td style="text-align:left;"> motion </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> putpendown </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> pendown </td>
+   <td style="text-align:left;"> pen </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> putpenup </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> penup </td>
+   <td style="text-align:left;"> pen </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> randomfrom_to </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> pickrandom_to_ </td>
+   <td style="text-align:left;"> operators </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> rest_elapsed_from </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> restfor_beats </td>
+   <td style="text-align:left;"> sound </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> rewindsound </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> sound </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> readvariable </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> readvariable </td>
+   <td style="text-align:left;"> variables </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> rounded </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> round_ </td>
+   <td style="text-align:left;"> operators </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> say </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> say_ </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> say_duration_elapsed_from </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> say_for_secs </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> saynothing </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> scale </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> size </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> sensor </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> _sensorvalue </td>
+   <td style="text-align:left;"> sensing </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> sensorpressed </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> sensor_ </td>
+   <td style="text-align:left;"> sensing </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> setblurto </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> setbrightnessshiftto </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> setfisheyeto </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> setgraphiceffect.to </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> set_effectto_ </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> sethueshiftto </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> setline_oflist_to </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> replaceitem_of_with_ </td>
+   <td style="text-align:left;"> list </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> setmosaiccountto </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> setmotordirection </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> motor </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> setpenhueto </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> setpencolorto_ </td>
+   <td style="text-align:left;"> pen </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> setpenshadeto </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> setpenshadeto_ </td>
+   <td style="text-align:left;"> pen </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> setpixelatecountto </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> setpointillizesizeto </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> setsaturationshiftto </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> setsizeto </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> setsizeto_ </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> setstretchto </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> settempoto </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> settempoto_bpm </td>
+   <td style="text-align:left;"> sound </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> setvar_to </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> set_to_ </td>
+   <td style="text-align:left;"> variables </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> setvisibilityto </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> setvolumeto </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> setvolumeto_ </td>
+   <td style="text-align:left;"> sound </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> setwaterrippleto </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> setwhirlto </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> show </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> show </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> showbackground </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> switchtobackground_ </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> showvariable </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> showvariable_ </td>
+   <td style="text-align:left;"> variables </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> soundlevel </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> loudness </td>
+   <td style="text-align:left;"> sensing </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> sqrt </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> operators </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> stampcostume </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> stamp </td>
+   <td style="text-align:left;"> pen </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> startmotorpower </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> motor </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> stopall </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> stopall </td>
+   <td style="text-align:left;"> control </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> stopallsounds </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> stopallsounds </td>
+   <td style="text-align:left;"> sound </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> stringlength </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> tempo </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> tempo </td>
+   <td style="text-align:left;"> sound </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> think </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> think_ </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> think_duration_elapsed_from </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> think_for_secs </td>
+   <td style="text-align:left;"> looks </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> timer </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> timer </td>
+   <td style="text-align:left;"> sensing </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> timerreset </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> resettimer </td>
+   <td style="text-align:left;"> sensing </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> touching </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> touching_ </td>
+   <td style="text-align:left;"> sensing </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> touchingcolor </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> touchingcolor_ </td>
+   <td style="text-align:left;"> sensing </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> turnawayfromedge </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> turnleft </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> turn_degrees </td>
+   <td style="text-align:left;"> motion </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> turnright </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> turn_degrees </td>
+   <td style="text-align:left;"> motion </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> volume </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> volume </td>
+   <td style="text-align:left;"> sound </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> wait.elapsed.from </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> wait_secs </td>
+   <td style="text-align:left;"> control </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> xpos </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> turn_degrees </td>
+   <td style="text-align:left;"> motion </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> set_xpos </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> setxto_ </td>
+   <td style="text-align:left;"> motion </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> yourself </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ypos </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> yposition </td>
+   <td style="text-align:left;"> motion </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> set_ypos </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> setyto_ </td>
+   <td style="text-align:left;"> motion </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> askyahoo </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> experimental </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> wordoftheday </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> experimental </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> jokeoftheday </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> experimental </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> synonym </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> experimental </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> info_fromzip </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> experimental </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> scratchrinfo_foruser </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> experimental </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> other </td>
+   <td style="text-align:left;"> character </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> experimental </td>
+  </tr>
+</tbody>
+</table>
+
+<h2>Summary</h2>
+
+<p>The following figure shows how many times each block was used, summed across all Scratch projects in the dataset:</p>
+
+<p>```</p>
+
+<h2>Warning in FUN(X[[i]], ...): integer overflow - use sum(as.numeric(.))</h2>
+
+<p>```</p>
+
+<p><img src="./project_blocks_files/template-27-project_blocks.Rmd-unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2" title=""></p>
+
+<h2>Omitted Observations</h2>
+
+<p>We omit 487,528 observations because they refer to observations in older, non-public, versions of projects that were replaced on the site. Additionally, we omit 498,074 observations from projects which are not included in our <a href="https://llk.media.mit.edu/scratch-dataset/project.html">projects table</a> (e.g., they were removed from the site by their creators). See the <a href="https://llk.media.mit.edu/scratch-dataset/projects.html">projects table</a> for details on these omitted data.</p>
+
+<h2>Download Datasets</h2>
+
+<ul>
+<li><a href="https://llk.media.mit.edu/scratch-dataset/web_data/project_blocks.RData">R Data format</a></li>
+<li><a href="https://llk.media.mit.edu/scratch-dataset/web_data/project_blocks.csv.bz2">Comma Separated Values (CSV)</a> (bzip2 compressed)</li>
+</ul>
+
+ 
+
+</body></html>
