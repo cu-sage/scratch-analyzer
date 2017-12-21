@@ -115,6 +115,24 @@ dir.create(paste(getwd(),"/outputCSV",sep=""))
 write.csv(dfinal,paste(getwd(),"/outputCSV/ev_results.csv",sep=""))
 write.csv(dtest,paste(getwd(),"/outputCSV/ev_tests.csv",sep="")) #tests
 
+#write statistics of results 
+dstat_input =read_csv(paste(getwd(),"/outputCSV/ev_results.csv",sep=""))
+dstats = as.data.frame(rbind(c("looks",mean(dstat_input$looks),sd(dstat_input$looks)),
+                             c("sound",mean(dstat_input$sound),sd(dstat_input$sound)),
+                             c("motion",mean(dstat_input$motion),sd(dstat_input$motion)),
+                             c("variables",mean(dstat_input$variables),sd(dstat_input$variables)),
+                             c("seq_looping",mean(dstat_input$seq_looping),sd(dstat_input$seq_looping)),
+                             c("boolean_exp",mean(dstat_input$boolean_exp),sd(dstat_input$boolean_exp)),
+                             c("operators",mean(dstat_input$operators),sd(dstat_input$operators)),
+                             c("conditional",mean(dstat_input$conditional),sd(dstat_input$conditional)),
+                             c("coordination",mean(dstat_input$coordination),sd(dstat_input$coordination)),
+                             c("ui_event",mean(dstat_input$ui_event),sd(dstat_input$ui_event)),
+                             c("parallelization",mean(dstat_input$parallelization),sd(dstat_input$parallelization)),
+                             c("initialize_location",mean(dstat_input$initialize_location),sd(dstat_input$initialize_location)),
+                             c("initialize_looks",mean(dstat_input$initialize_looks),sd(dstat_input$initialize_looks))))
+colnames(dstats) = c("evidence_variable","mean","standard_deviation")
+write.csv(dstats,paste(getwd(),"/outputCSV/ev_statistics.csv",sep=""))
+
 #VISUALIZATION
 #PLOT OF EACH PROJECT
 dir.create(paste(getwd(),"/outputPlots",sep=""))
