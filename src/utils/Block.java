@@ -9,7 +9,6 @@ public class Block {
 	private String objName;
 	private String blockName;
 	private String id;
-	
 	private static final String SE_OBJ_OPEN = "<<";
 	private static final String SE_OBJ_CLOSE = ">>";
 	

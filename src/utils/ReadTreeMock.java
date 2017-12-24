@@ -20,7 +20,7 @@ import java.util.List;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
 
-public class ReadTree {
+public class ReadTreeMock {
 	private Path outputDir;
 	private ArrayList<Tree<Block>> userProject;//Stores a set of TimeStamps. Each tree in the list is one version of the project
 
@@ -39,7 +39,7 @@ public class ReadTree {
 	 * @param outputDir where to output the analysis data
 	 * @param userProject is one complete project. Holds the timesStamped projects 
 	 */
-	public ReadTree(Path outputDir, ArrayList<Tree<Block>> userProject) {
+	public ReadTreeMock(Path outputDir, ArrayList<Tree<Block>> userProject) {
 
 		this.outputDir = outputDir;
 		this.userProject = userProject;
@@ -60,7 +60,8 @@ public class ReadTree {
 		for(int i=0;i<userProject.size()-1;i++) {
 			Tree<Block> instance1 = userProject.get(i);
 			Tree<Block> instance2 = userProject.get(i+1);
-
+			if (instance1== null || instance2==null)
+				return;
 			makeComparison(instance1,instance2,instance1.getName(),instance2.getName(), i+1);
 				
 		}
@@ -93,15 +94,15 @@ public class ReadTree {
 		boolean changedNow = false;
 		if (firstHead!=null && firstHead.getBlockName()!=null) {
 			if(secondHead!=null && secondHead.getBlockName()!=null) {
-				if(firstHead.getId().compareTo(secondHead.getId())!=0){
-					values.add(new Data(firstNo, secondNo, firstHead.getBlockName(),true,firstHead.getId()));
-					updateChanges(firstHead.getId(),1);
+				if(!firstHead.getBlockName().equals(secondHead.getBlockName())){
+					values.add(new Data(firstNo, secondNo, firstHead.getBlockName(),true,firstHead.getBlockName()));
+					updateChanges(firstHead.getBlockName(),1);
 					changedNow = true;
 					countChange++;
 				}
 				else {
-					values.add(new Data(firstNo, secondNo, firstHead.getBlockName(),false,firstHead.getId()));
-					updateChanges(firstHead.getId(),0);
+					values.add(new Data(firstNo, secondNo, firstHead.getBlockName(),false,firstHead.getBlockName()));
+					updateChanges(firstHead.getBlockName(),0);
 				}
 			}
 		}
@@ -117,8 +118,8 @@ public class ReadTree {
 			flag = 2;
 		if(flag == 1) {
 			for(int i=0;i<secondProject.size();i++) {
-				String firstBlock = firstProject.get(i).getId();
-				String secondBlock = secondProject.get(i).getId();
+				String firstBlock = firstProject.get(i).getBlockName();
+				String secondBlock = secondProject.get(i).getBlockName();
 
 				if(firstBlock.compareTo(secondBlock)==0) {
 					values.add(new Data(firstNo, secondNo, firstProject.get(i).getBlockName(),false,firstBlock));
@@ -133,7 +134,7 @@ public class ReadTree {
 				}
 			}
 			for(int i=secondProject.size();i<firstProject.size();i++) {
-				String firstBlock = firstProject.get(i).getId();
+				String firstBlock = firstProject.get(i).getBlockName();
 
 				values.add(new Data(firstNo, secondNo, firstProject.get(i).getBlockName()+ " deleted",true,firstBlock));
 				updateChanges(firstBlock,1);
@@ -144,8 +145,8 @@ public class ReadTree {
 
 		else {
 			for(int i=0;i<firstProject.size();i++) {
-				String firstBlock = firstProject.get(i).getId();
-				String secondBlock = secondProject.get(i).getId();
+				String firstBlock = firstProject.get(i).getBlockName();
+				String secondBlock = secondProject.get(i).getBlockName();
 				if(firstBlock.compareTo(secondBlock)==0) {
 
 					values.add(new Data(firstNo, secondNo, firstProject.get(i).getBlockName(),false,firstBlock));
@@ -162,7 +163,7 @@ public class ReadTree {
 			}
 			if(flag==0) {
 				for(int i=firstProject.size();i<secondProject.size();i++) {
-					String secondBlock = secondProject.get(i).getId();
+					String secondBlock = secondProject.get(i).getBlockName();
 
 					values.add(new Data(firstNo, secondNo, secondProject.get(i).getBlockName()+ " added",true,secondBlock));
 					updateChanges(secondBlock,1);
@@ -266,3 +267,4 @@ public class ReadTree {
 	}
 
 }
+
