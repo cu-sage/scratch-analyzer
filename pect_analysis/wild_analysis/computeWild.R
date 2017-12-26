@@ -132,7 +132,8 @@ for (i in 2:length(colnames(dtWildClean))-1){
 }
 
 #OUTPUT
-write.csv(dt_final,"ev_output.csv")
+dir.create(paste(getwd(),"/outputCSV",sep=""))
+write.csv(dt_final,paste(getwd(),"/outputCSV/ev_output.csv",sep=""))
 
 
 
