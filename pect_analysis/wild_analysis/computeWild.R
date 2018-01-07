@@ -1,5 +1,4 @@
 library(tidyverse)
-library(stringr)
 
 #HELPER FUNCTIONS
 #Returns a boolean to determine if the more than n blocks exists in the data set
@@ -135,5 +134,60 @@ for (i in 2:length(colnames(dtWildClean))-1){
 dir.create(paste(getwd(),"/outputCSV",sep=""))
 write.csv(dt_final,paste(getwd(),"/outputCSV/ev_output.csv",sep=""))
 
+#VISUALIZE
+df = read.csv(paste(getwd(),"/outputCSV/ev_output.csv",sep=""))
+
+#function to prepare data for boxplot visualization
+#catName = name of category to recreate data frame
+reform = function(df, catName){
+  cat = filter(df,category==catName)
+  cat_t = as.data.frame(t(cat))
+  cat_t = as.data.frame(cat_t[3:nrow(cat_t),])
+  catrow = as.data.frame(rep(catName,nrow(cat_t)))
+  dfinal = cbind(catrow,cat_t)
+  colnames(dfinal) = c("category","score")
+  dfinal$score = as.numeric(as.character(dfinal$score))
+  return(dfinal)
+}
+cat_vector = as.character(df$category)
+dfinal = data.frame()
+for (i in cat_vector){
+  dfinal = rbind(dfinal,reform(df,i))
+}
+reform(df,"sound")
+plot = ggplot(data = dfinal) + geom_boxplot(mapping = aes(x = category, y = score, fill = "orange")) + theme(axis.text.x = element_text(angle = 30, hjust = 1)) + ggtitle("Wild Data Evidence Variables") + xlab("Category") + ylab("Score")+ guides(fill=FALSE)
+dir.create(paste(getwd(),"/outputPlots",sep=""))
+ggsave("wild_ev.png",plot,path=(paste(getwd(),"/outputPlots",sep="")))
+
+#STATISTICS
+dstat_input = read_csv(paste(getwd(),"/outputCSV/ev_output.csv",sep=""))
+names = dstat_input$category
+dstat_input = as.data.frame(t(dstat_input)[-1,])
+dstat_input = dstat_input[-1,]
+colnames(dstat_input) = names
+factorToNumeric = function(vec){
+  return(as.numeric(as.character(vec)))
+}
+#write statistics of results 
+dstats = as.data.frame(
+  rbind(c("looks",mean(factorToNumeric(dstat_input$looks)),sd(factorToNumeric(dstat_input$looks))),
+        c("sound",mean(factorToNumeric(dstat_input$sound)),sd(factorToNumeric(dstat_input$sound))),
+        c("motion",mean(factorToNumeric(dstat_input$motion)),sd(factorToNumeric(dstat_input$motion))),
+        c("variables",mean(factorToNumeric(dstat_input$variables)),sd(factorToNumeric(dstat_input$variables))),
+        c("seq_looping",mean(factorToNumeric(dstat_input$seq_looping)),sd(factorToNumeric(dstat_input$seq_looping))),
+        c("boolean_exp",mean(factorToNumeric(dstat_input$boolean_exp)),sd(factorToNumeric(dstat_input$boolean_exp))),
+        c("operators",mean(factorToNumeric(dstat_input$operators)),sd(factorToNumeric(dstat_input$operators))),
+        c("conditional",mean(factorToNumeric(dstat_input$conditional)),sd(factorToNumeric(dstat_input$conditional))),
+        c("coordination",mean(factorToNumeric(dstat_input$coordination)),sd(factorToNumeric(dstat_input$coordination))),
+        c("ui_event",mean(factorToNumeric(dstat_input$ui_event)),sd(factorToNumeric(dstat_input$ui_event))),
+        c("parallelization",mean(factorToNumeric(dstat_input$parallelization)),sd(factorToNumeric(dstat_input$parallelization))),
+        c("initialize_location",mean(factorToNumeric(dstat_input$initialize_location)),sd(factorToNumeric(dstat_input$initialize_location))),
+        c("initialize_looks",mean(factorToNumeric(dstat_input$initialize_looks)),sd(factorToNumeric(dstat_input$initialize_looks)))))
+colnames(dstats) = c("evidence_variable","mean","standard_deviation")
+write.csv(dstats,paste(getwd(),"/outputCSV/ev_statistics.csv",sep=""))
+
+
+dplot = read_csv(paste(getwd(),"/outputCSV/ev_output.csv",sep=""))
+ggplot(data = )
 
 
