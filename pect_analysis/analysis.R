@@ -81,7 +81,8 @@ computeProject = function(dfkey, project, userIDnum, projectIDnum){
   return(dt_return_final)
 }
 
-#NEED TO NOT BE PLATFORM BASED
+#START MAIN SCRIPT
+#INPUT
 df = read_csv("/Users/TimGimi/sageMaster/scratch-analyzer/example_input_output/Output/RegularOutput/dispatched/dispatch_perProject.csv")
 colnames(df) = c("userID","projectID","block","count")
 df = filter(df,!is.na(block))
@@ -116,7 +117,7 @@ write.csv(dfinal,paste(getwd(),"/outputCSV/ev_results.csv",sep=""))
 write.csv(dtest,paste(getwd(),"/outputCSV/ev_tests.csv",sep="")) #tests
 
 #write statistics of results 
-dstat_input =read_csv(paste(getwd(),"/outputCSV/ev_results.csv",sep=""))
+dstat_input = dfinal
 dstats = as.data.frame(rbind(c("looks",mean(dstat_input$looks),sd(dstat_input$looks)),
                              c("sound",mean(dstat_input$sound),sd(dstat_input$sound)),
                              c("motion",mean(dstat_input$motion),sd(dstat_input$motion)),
@@ -148,7 +149,28 @@ for (i in 1:max(dfinal$userID)){
   }
 }
 
-#OUTPUT BLOCKS THAT ARE IN NEWER VERSION OF SCRATCH
+#BOXPLOT CLASS VISUALIZATION
+df = dfinal
+#function to prepare data for boxplot visualization
+#catName = name of category to recreate data frame
+reform = function(df, catName){
+  cat = as.data.frame(df[[catName]])
+  catrow = as.data.frame(rep(catName,nrow(cat)))
+  dfinal = cbind(catrow,cat)
+  colnames(dfinal) = c("category","score")
+  dfinal$score = as.numeric(as.character(dfinal$score))
+  return(dfinal)
+}
+cat_vector = colnames(df)[3:15] #retrieve category
+dboxplot = data.frame()
+
+for (i in cat_vector){
+  dboxplot = rbind(dboxplot,reform(df,i))
+}
+plot = ggplot(data = dboxplot) + geom_boxplot(mapping = aes(x = category, y = score, fill = "orange")) + theme(axis.text.x = element_text(angle = 30, hjust = 1)) + ggtitle("Wild Data Evidence Variables") + xlab("Category") + ylab("Score")+ guides(fill=FALSE)
+ggsave("class_ev_boxplot.png",plot,path=(paste(getwd(),"/outputPlots",sep="")))
+
+#OUTPUT BLOCK NAMES THAT ARE IN NEWER VERSION OF SCRATCH
 blockListWild = read_csv("blockListWild.csv")
 blockListSAGE = read_csv("blockListSAGE.csv")
 blockListWild = blockListWild$Variable
