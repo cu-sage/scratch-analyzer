@@ -83,7 +83,8 @@ computeProject = function(dfkey, project, userIDnum, projectIDnum){
 
 #START MAIN SCRIPT
 #INPUT
-df = read_csv("/Users/TimGimi/sageMaster/scratch-analyzer/example_input_output/Output/RegularOutput/dispatched/dispatch_perProject.csv")
+drct = getwd() #directory
+df = read_csv(gsub("pect_analysis","example_input_output/Output/RegularOutput/dispatched/dispatch_perProject.csv",drct))
 colnames(df) = c("userID","projectID","block","count")
 df = filter(df,!is.na(block))
 dfkey = read_csv(paste(getwd(),"/ev_keys.csv",sep=""))[,-1]
