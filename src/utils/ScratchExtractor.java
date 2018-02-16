@@ -133,7 +133,7 @@ public class ScratchExtractor {
 					objScript.append(line.substring(line.indexOf(SCRIPTS) + SCRIPTS.length(),
 							line.length()));
 				}
-
+				
 				if (isInScript)
 				{
 					if(!line.contains(SCRIPTS)) {
@@ -237,7 +237,7 @@ public class ScratchExtractor {
 			reader.close();
 
 			if(project != null)
-				addProject(userID,timeStamp, project,projectName);
+				addProject(userID,timeStamp, project, projectName);
 
 		} catch (IOException e) {
 			throw new RuntimeException(e);
@@ -607,7 +607,6 @@ public class ScratchExtractor {
 			writeProjects(howToExtract);
 		}
 
-
 	}
 
 
@@ -659,7 +658,7 @@ public class ScratchExtractor {
 				file = new ReadTree(output,userTimeStampedProjects.get(user).get(project));
 				file.aggregateTimeStampedProjects();
 				StatisticalData dataForThisUser = file.getStatisticalData();
-				writer = writeForThisProject(user,project,dataForThisUser,writer);
+				writer = writeForThisProject(user, project, dataForThisUser, writer);
 			}
 		}
 		writer.close();
@@ -673,7 +672,8 @@ public class ScratchExtractor {
 		try {
 			writer = new BufferedWriter(new OutputStreamWriter(
 					new FileOutputStream(Paths.get(dir.toString(), "StatiscalAnalysis.csv").toString()), "utf-8"));
-			writer.write("UserId" + "," + "ProjectName" + "," + "Mean" + "," + "StandardDeviation"+ " \n");
+			writer.write("UserId" + "," + "ProjectName" + "," + "changePerBlock_mean" + "," + "changePerBlock_sd, changePerBlock_max, changePerBlock_min, changePerBlock_range, changePerBlock_skewness"+ ", changeInterval_mean, changeInterval_sd, changeInterval_max, changeInterval_min, changeInterval_range, changeInterval_skewness, "
+					+ "blockInterval_mean, blockInterval_sd, blockInterval_max, blockInterval_min, blockInterval_range, blockInterval_skewness, " + "changePerInterval_mean, changePerInterval_sd, changePerInterval_max, changePerInterval_min, changePerInterval_range, changePerInterval_skewness" + " \n");
 		}
 		catch(IOException e) {
 			System.out.println(e);
@@ -686,13 +686,16 @@ public class ScratchExtractor {
 	public static Writer writeForThisProject(int user, String project, StatisticalData data,Writer writer) {
 		try {
 			
-			writer.write(user + "," + project + "," + data.getMean() + "," + data.getStandardDeviation()+ " \n");
+			writer.write(user + "," + project + "," + data.changePerBlock_mean + "," + data.changePerBlock_sd+ "," + data.changePerBlock_max + ","+ data.changePerBlock_min + "," + data.changePerBlock_range + "," + data.changePerBlock_skewness + "," + data.changeInterval_mean + "," 
+			+ data.changeInterval_sd + ","  + data.changeInterval_max + ","  + data.changeInterval_min + ","  + data.changeInterval_range + ","  + data.changeInterval_skewness + "," + data.blockInterval_mean + ", " + data.blockInterval_sd + "," + data.blockInterval_max + "," + data.blockInterval_min + "," + data.blockInterval_range + "," + data.blockInterval_skewness + ","+ data.changePerInterval_mean + ","
+					+ data.changePerInterval_sd + "," + data.changePerInterval_max + ","+ data.changePerInterval_min + ","+ data.changePerInterval_range + ","+ data.changePerInterval_skewness +  " \n");
 		}
 		catch(IOException e) {
 			System.out.println(e);
 		}
 		return writer;
 	}
+	
 	
 
 	/**
