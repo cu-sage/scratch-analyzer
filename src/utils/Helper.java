@@ -12,7 +12,7 @@ public class Helper {
 	 * getList of Block names
 	 */
 	public  ArrayList<String> getBlockNames() throws FileNotFoundException {
-		File file = new File("BlockList.txt");
+		File file = new File("FilesRequired/BlockList.txt");
 		Scanner sc = new Scanner(file);
 		ArrayList<String> blockList = new ArrayList<>();
 		while(sc.hasNextLine()) 

@@ -632,7 +632,7 @@ public class ScratchExtractor {
 		System.out.println("Deleting all files in " + finalDir);
 		IOUtils.rm(finalDir);
 		ScratchExtractor extractor = new ScratchExtractor(scratchDir, outputDir);
-		boolean howToProceed = true;//Value of this determines whether we are parsing timeStamped or a normal set of projects
+		boolean howToProceed = false;//Value of this determines whether we are parsing timeStamped or a normal set of projects
 		extractor.extract(howToProceed);
 		Files.move(outputDir, finalDir, StandardCopyOption.ATOMIC_MOVE);
 		IOUtils.rm(extractor.scratchJsonDir);
