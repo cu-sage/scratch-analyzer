@@ -2,7 +2,7 @@
 1,%,5
 1,&,18
 1,*,59
-1,+,81
+1,+,82
 1,-,74
 1,<,63
 1,=,428
@@ -85,7 +85,7 @@
 1,readVariable,885
 1,rounded,8
 1,say:,6
-1,say:duration:elapsed:from:,14
+1,say:duration:elapsed:from:,15
 1,scale,11
 1,sentence,1
 1,setGraphicEffect:to:,32
@@ -110,14 +110,14 @@
 1,think:duration:elapsed:from:,3
 1,timer,2
 1,timerReset,2
-1,touching:,37
+1,touching:,38
 1,touchingColor:,4
 1,turnLeft:,8
 1,turnRight:,7
-1,wait:elapsed:from:,80
+1,wait:elapsed:from:,81
 1,whenClicked,7
 1,whenCloned,39
-1,whenGreenFlag,49
+1,whenGreenFlag,50
 1,whenIReceive,91
 1,whenKeyPressed,17
 1,x,2

@@ -1,0 +1,7 @@
+<<Object Stage>>
+		<<Object Sprite1>>
+				whenGreenFlag
+				wait:elapsed:from:
+				say:duration:elapsed:from:
+				+
+				touching:
