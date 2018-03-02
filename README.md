@@ -22,8 +22,18 @@ Scratch Analyzer has been developed and tested in a Window 7 64-bit OS.  Its out
 # Example command-line instructions:
 
 ## Scratch Extractor:
+
+### Windows
 Usage: java -classpath <Path to zip4j;...> utils.ScratchExtractor <Path to Scratch sb2 files> <Output Path>
 java -classpath C:\Users\jbender\Documents\docs\misc\cs\_bda\fp\scratch\analysis\scratch_analyzer\bin;C:\Users\jbender\Documents\docs\misc\cs\_bda\fp\download\zip4j_1.3.2.jar utils.ScratchExtractor c:\Users\jbender\Documents\docs\misc\cs\_bda\fp\scratch\analysis\data\s\in c:\Users\jbender\Documents\docs\misc\cs\_bda\fp\scratch\analysis\data\s\extracted
+
+### Linux
+Usage: Replace <YOUR_SCRATCH_ANALYZER_HOME> with your scratch-analyzer folder directory
+
+```bash
+$ java -cp <YOUR_SCRATCH_ANALYZER_HOME>/bin:<YOUR_SCRATCH_ANALYZER_HOME>/bin/zip4j-1.3.2.jar utils.ScratchExtractor <YOUR_SCRATCH_ANALYZER_HOME>/example_input_output/Input <YOUR_SCRATCH_ANALYZER_HOME>/Output/TestOutput/extracted
+```
+This is just an example and you can run extractor on other input/output files
 
 ## Scratch Dispatcher:
 Usage: java -classpath <...> utils.ScratchDispatcher <Path to extracted .se files> <Output Path>
