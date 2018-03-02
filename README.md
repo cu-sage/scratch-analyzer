@@ -28,6 +28,16 @@ Usage: java -classpath <Path to zip4j;...> utils.ScratchExtractor <Path to Scrat
 java -classpath C:\Users\jbender\Documents\docs\misc\cs\_bda\fp\scratch\analysis\scratch_analyzer\bin;C:\Users\jbender\Documents\docs\misc\cs\_bda\fp\download\zip4j_1.3.2.jar utils.ScratchExtractor c:\Users\jbender\Documents\docs\misc\cs\_bda\fp\scratch\analysis\data\s\in c:\Users\jbender\Documents\docs\misc\cs\_bda\fp\scratch\analysis\data\s\extracted
 
 ### Linux
+After cloning the repository, please be aware that StatisticalData.class doesn't exist. Therefore the first step is to compile it.
+
+```bash
+$ cd src/utils
+$ javac StatisticalData.java
+$ chmod +x StatisticalData.class
+$ cd ../..
+$ cp src/utils/StatisticalData.class bin/utils
+```
+
 Usage: Replace <YOUR_SCRATCH_ANALYZER_HOME> with your scratch-analyzer folder directory
 
 ```bash
