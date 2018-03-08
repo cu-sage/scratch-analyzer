@@ -1,0 +1,24 @@
+<<Object Stage>>
+		whenGreenFlag
+		doForever
+				doPlaySoundAndWait
+		<<Object drawing1>>
+				whenKeyPressed
+				doRepeat
+						changeGraphicEffect:by:
+				nextCostume
+				doRepeat
+						changeGraphicEffect:by:
+				whenGreenFlag
+				gotoX:y:
+				show
+				lookLike:
+				doForever
+						doIfElse
+						=
+						costumeIndex
+						gotoX:y:
+						gotoX:y:
+		<<Object drawing2>>
+				whenGreenFlag
+				hide
