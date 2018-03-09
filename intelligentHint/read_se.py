@@ -3,8 +3,8 @@ import pandas as pd
 import random
 import glob
 import os
-import sys
 import numpy as np
+import shutil
 
 
 # Hash string into 8 digits numbers
@@ -47,17 +47,17 @@ def convert_se_to_csv_diff(directory, student_type, student_id):
 def convert_se_to_csv(directory, student_type, student_id):
     diff = []
     n = len(glob.glob(directory + '/*.se'))
-    print(glob.glob('*.se'))
     for i in range(n):
         list2 = read_se(os.path.join(directory, str(i) + ".se"))
         diff.append(list2)
     df = pd.DataFrame({'operation': diff})
+
     try:
-        os.mkdir("csv_file/operation/success/" + str(student_type))
+        os.mkdir("csv_file/operation/failure/" + str(student_type))
     except OSError as e:
         print(e)
 
-    df.to_csv("csv_file/operation/success/" + str(student_type) + "/" + str(student_id) + "output1.csv")
+    df.to_csv("csv_file/operation/failure/" + str(student_type) + "/output" + str(student_id) + ".csv")
 
 
 # List all the operations exists in completeSE, and save them into operations.csv
@@ -149,15 +149,14 @@ if __name__ == "__main__":
     # read_se("sage-frontend/machine_learning/sample_data/0/CTG-22.se")
     # convert_se_to_csv("")
     # calculate("completeSE")
-    for i in range(5):
-        generate_mock_se_success("Face Morphing.se", i + 1)
-        generate_mock_se_failure("Face Morphing.se", i + 1)
+    # for i in range(5):
+    #     generate_mock_se_success("Face Morphing.se", i + 1)
+    #     generate_mock_se_failure("Face Morphing.se", i + 1)
 
     operation = read_operation("operations.csv")
-    input_file = "../mockData/failure/1/1/100.se"
-    sys.exit()
+    # input_file = "../mockData/failure/1/1/100.se"
     # print(read_se(input_file, operation))
 
     for i in range(1, 5):
         for j in range(25):
-            convert_se_to_csv("../mockData/success/" + str(i) + "/" + str(j) + "/", i, j)
+            convert_se_to_csv("../../mockData/failure/" + str(i) + "/" + str(j) + "/", i, j)
