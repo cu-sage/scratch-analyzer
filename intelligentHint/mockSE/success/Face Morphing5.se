@@ -235,15 +235,6 @@
 				whenKeyPressed
 				show
 		<<Object 3_3'>>
-				whenKeyPressed
-				hide
-				whenKeyPressed
-				show
-		<<Object 6_6'2>>
-				whenKeyPressed
-				hide
-				whenKeyPressed
-				show
 				whenGreenFlag
 				gotoX:y:
 				setVar:to:
@@ -253,6 +244,15 @@
 						computeFunction:of:
 						readVariable
 				changeVar:by:
+				whenKeyPressed
+				hide
+				whenKeyPressed
+				show
+		<<Object 6_6'2>>
+				whenKeyPressed
+				hide
+				whenKeyPressed
+				show
 				whenGreenFlag
 				gotoX:y:
 		<<Object P12>>

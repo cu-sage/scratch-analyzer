@@ -3,6 +3,8 @@ import pandas as pd
 import random
 import glob
 import os
+import sys
+import numpy as np
 
 
 # Hash string into 8 digits numbers
@@ -57,6 +59,7 @@ def convert_se_to_csv(directory, student_type, student_id):
 
     df.to_csv("csv_file/operation/success/" + str(student_type) + "/" + str(student_id) + "output1.csv")
 
+
 # List all the operations exists in completeSE, and save them into operations.csv
 def calculate(dir):
     all_operation = set()
@@ -69,42 +72,74 @@ def calculate(dir):
     # return all_operation
 
 
-# Reverse some lines in the compleseSE file
-def generate_mock_se_success(input_file, index):
+# shuffle some blocks in the compleseSE file
+def generate_mock_se_success(input_file, n):
     with open("completeSE/" + input_file, encoding='utf-8') as f:
         content = f.readlines()
 
-    # the biginning line
-    begin = random.randint(1, len(content) - 10)
-    l = random.randint(5, 10)
-    print(begin, l)
+    blocks = []
+    prev = 0
+    index = 0
+    for i in range(len(content)):
+        if count_indent(content[i]) == 2 and content[i].lstrip()[0] == '<':
+            index += 1
+            if index == 1:
+                prev = i
+                continue
+            blocks.append((prev + 1, i))
+            prev = i
+    # the beginning block
+    begin = random.randint(1, len(blocks) - 5)
+    old_index = list(range(begin, begin + 5))
+    new_index = old_index[:]
+    np.random.shuffle(new_index)
+    new_content = content[:]
+    # shuffle the blocks between begin, begin + 5
+    for t in range(5):
+        new_content[blocks[old_index[t]][0]:blocks[old_index[t]][1]] \
+            = content[blocks[new_index[t]][0]:blocks[new_index[t]][1]]
 
-    # swap the element between begin, begin + l
-    for i in range(begin, begin + l):
-        content[i], content[i + l] = content[i + l], content[i]
+    output_file = "mockSE/success/" + input_file.split('.')[0] + str(n) + "." + input_file.split('.')[1]
+    fo = open(output_file, "w")
+    fo.writelines(new_content)
 
-    output_file = "mockSE/success/" + input_file.split('.')[0] + str(index) + "." + input_file.split('.')[1]
+
+# Delete some blocks in the compleseSE file
+def generate_mock_se_failure(input_file, n):
+    with open("completeSE/" + input_file, encoding='utf-8') as f:
+        content = f.readlines()
+
+    blocks = []
+    prev = 0
+    index = 0
+    for i in range(len(content)):
+        if count_indent(content[i]) == 2 and content[i].lstrip()[0] == '<':
+            index += 1
+            if index == 1:
+                prev = i
+                continue
+            blocks.append((prev + 1, i))
+            prev = i
+    # the beginning block
+    begin = random.randint(1, len(blocks) - 5)
+    l = random.randint(1, 5)
+    print(blocks)
+    print(begin)
+
+    # delete the blocks between begin, begin + l
+    del content[blocks[begin][0]:blocks[begin + l][1]]
+
+    output_file = "mockSE/failure/" + input_file.split('.')[0] + str(n) + "." + input_file.split('.')[1]
     fo = open(output_file, "w")
     fo.writelines(content)
 
 
-# Delete some lines in the compleseSE file
-def generate_mock_se_failure(input_file, index):
-    with open("completeSE/" + input_file, encoding='utf-8') as f:
-        content = f.readlines()
-
-    # the biginning line
-    begin = random.randint(1, len(content) - 10)
-    l = random.randint(5, 10)
-    print(begin, l)
-
-    # delete the element between begin, begin + l
-    del content[begin:begin + l]
-
-    output_file = "mockSE/failure/" + input_file.split('.')[0] + str(index) + "." + input_file.split('.')[1]
-    fo = open(output_file, "w")
-    fo.writelines(content)
-
+def count_indent(line):
+    count = 0
+    for i in range(len(line)):
+        if line[i] == '\t':
+            count += 1
+    return count
 
 def read_operation(opt_file):
     df = pd.read_csv(opt_file, index_col="operation")
@@ -114,12 +149,13 @@ if __name__ == "__main__":
     # read_se("sage-frontend/machine_learning/sample_data/0/CTG-22.se")
     # convert_se_to_csv("")
     # calculate("completeSE")
-    # for i in range(5):
-    #     generate_mock_se_success("Face Morphing.se", i + 1)
-    #     generate_mock_se_failure("Face Morphing.se", i + 1)
+    for i in range(5):
+        generate_mock_se_success("Face Morphing.se", i + 1)
+        generate_mock_se_failure("Face Morphing.se", i + 1)
 
     operation = read_operation("operations.csv")
     input_file = "../mockData/failure/1/1/100.se"
+    sys.exit()
     # print(read_se(input_file, operation))
 
     for i in range(1, 5):

@@ -447,35 +447,10 @@
 				whenIReceive
 				glideSecs:toX:y:elapsed:from:
 						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
 		<<Object P4>>
 				whenKeyPressed
 				hide
 				whenKeyPressed
-				show
-				whenGreenFlag
-				gotoX:y:
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-		<<Object P6>>
 				whenKeyPressed
 				hide
 				whenKeyPressed
@@ -500,7 +475,7 @@
 				whenIReceive
 				glideSecs:toX:y:elapsed:from:
 						readVariable
-		<<Object P5>>
+				whenKeyPressed
 				whenKeyPressed
 				hide
 				whenKeyPressed
@@ -525,7 +500,7 @@
 				whenIReceive
 				glideSecs:toX:y:elapsed:from:
 						readVariable
-		<<Object 6_6'>>
+				whenKeyPressed
 				whenKeyPressed
 				hide
 				whenKeyPressed
@@ -533,13 +508,6 @@
 				whenGreenFlag
 				gotoX:y:
 				whenIReceive
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
 				glideSecs:toX:y:elapsed:from:
 						readVariable
 				whenIReceive
@@ -547,12 +515,44 @@
 						readVariable
 				whenIReceive
 				glideSecs:toX:y:elapsed:from:
-		<<Object P3>>
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenKeyPressed
+				show
 				whenGreenFlag
 				gotoX:y:
 				whenKeyPressed
 				hide
 				whenKeyPressed
+				show
+				whenGreenFlag
+				gotoX:y:
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
 				show
 				whenIReceive
 				glideSecs:toX:y:elapsed:from:

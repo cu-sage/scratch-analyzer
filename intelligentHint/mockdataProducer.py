@@ -80,7 +80,7 @@ def tinkerer(url, l):
 
 
 def mockPerProject(n, se):
-    url = 'mockData/success/'
+    url = '../../mockData/failure/'
     if os.path.exists(url):
         shutil.rmtree(url)
             
@@ -96,7 +96,7 @@ def mockPerProject(n, se):
 
 
 if __name__ == '__main__':
-    url = 'mockSE/success'
+    url = 'mockSE/failure'
     se = []
     for file in os.listdir(url):
         if not file.endswith(".se"):

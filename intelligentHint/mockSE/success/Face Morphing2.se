@@ -209,20 +209,13 @@
 				call
 				call
 		<<Object P1>>
-				whenKeyPressed
-				show
-				whenKeyPressed
-				hide
 				whenGreenFlag
 				gotoX:y:
+				whenKeyPressed
+				hide
+				whenKeyPressed
+				show
 		<<Object P2>>
-				whenGreenFlag
-				gotoX:y:
-				whenKeyPressed
-				hide
-				whenKeyPressed
-				show
-		<<Object 1_2>>
 				whenGreenFlag
 				gotoX:y:
 				doForever
@@ -230,11 +223,6 @@
 						*
 						computeFunction:of:
 						readVariable
-				whenKeyPressed
-				hide
-				whenKeyPressed
-				show
-		<<Object 3_3'>>
 				whenGreenFlag
 				gotoX:y:
 				setVar:to:
@@ -247,12 +235,24 @@
 				whenKeyPressed
 				hide
 				whenKeyPressed
-				show
-		<<Object 6_6'2>>
 				whenKeyPressed
 				hide
 				whenKeyPressed
 				show
+				whenGreenFlag
+				gotoX:y:
+						computeFunction:of:
+						readVariable
+				changeVar:by:
+				whenKeyPressed
+				hide
+				whenKeyPressed
+				show
+		<<Object 6_6'2>>
+				whenKeyPressed
+				show
+				whenKeyPressed
+				hide
 				whenGreenFlag
 				gotoX:y:
 		<<Object P12>>
@@ -637,15 +637,6 @@
 				glideSecs:toX:y:elapsed:from:
 						readVariable
 				whenIReceive
-				whenIReceive
-				heading:
-				turnRight:
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				heading:
-				glideSecs:toX:y:elapsed:from:
-						readVariable
 				glideSecs:toX:y:elapsed:from:
 						readVariable
 				whenIReceive
@@ -655,6 +646,15 @@
 				glideSecs:toX:y:elapsed:from:
 						readVariable
 		<<Object e2>>
+				whenIReceive
+				heading:
+				turnRight:
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				heading:
+				glideSecs:toX:y:elapsed:from:
+						readVariable
 				whenIReceive
 				heading:
 				turnRight:

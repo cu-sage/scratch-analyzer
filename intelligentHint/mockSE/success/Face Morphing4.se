@@ -36,6 +36,193 @@
 						stampCostume
 						goBackByLayers:
 		<<Object Pen>>
+				whenKeyPressed
+				show
+				whenKeyPressed
+				hide
+				whenGreenFlag
+				gotoX:y:
+		<<Object P1>>
+				whenKeyPressed
+				show
+				whenKeyPressed
+				hide
+				whenGreenFlag
+				gotoX:y:
+		<<Object P2>>
+				whenGreenFlag
+				gotoX:y:
+				whenKeyPressed
+				hide
+				whenKeyPressed
+				show
+		<<Object 1_2>>
+				whenGreenFlag
+				gotoX:y:
+				doForever
+						gotoX:y:
+						*
+						computeFunction:of:
+						readVariable
+				whenKeyPressed
+				hide
+				whenKeyPressed
+				show
+		<<Object 3_3'>>
+				whenGreenFlag
+				gotoX:y:
+				setVar:to:
+				doForever
+						gotoX:y:
+						*
+						computeFunction:of:
+						readVariable
+				changeVar:by:
+				whenKeyPressed
+				hide
+				whenKeyPressed
+				show
+		<<Object 6_6'2>>
+				whenKeyPressed
+				hide
+				whenKeyPressed
+				show
+				whenGreenFlag
+				gotoX:y:
+		<<Object P12>>
+				whenGreenFlag
+				gotoX:y:
+				whenKeyPressed
+				hide
+				whenKeyPressed
+				show
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+		<<Object P9>>
+				whenGreenFlag
+				gotoX:y:
+				whenKeyPressed
+				hide
+				whenKeyPressed
+				show
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+		<<Object P8>>
+				whenGreenFlag
+				gotoX:y:
+				whenKeyPressed
+				hide
+				whenKeyPressed
+				show
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+		<<Object P10>>
+				whenGreenFlag
+				gotoX:y:
+				whenKeyPressed
+				hide
+				whenKeyPressed
+				show
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+		<<Object P7>>
+				whenGreenFlag
+				gotoX:y:
+				whenKeyPressed
+				hide
+				whenKeyPressed
+				show
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+		<<Object 9_10>>
+				whenKeyPressed
+				hide
+				whenKeyPressed
+				show
+				whenGreenFlag
+				gotoX:y:
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+		<<Object 7_8>>
+				whenGreenFlag
+				gotoX:y:
+				whenKeyPressed
+				show
+				whenKeyPressed
+				whenGreenFlag
+				gotoX:y:
+				setVar:to:
+				doForever
+						gotoX:y:
+						*
+						computeFunction:of:
+				whenGreenFlag
+				gotoX:y:
+				whenKeyPressed
+				hide
+				whenKeyPressed
+				show
+						readVariable
 				procDef
 						x1
 						putPenUp
@@ -48,19 +235,17 @@
 						getParam
 						putPenUp
 				whenKeyPressed
-				doIfElse
-						=
-						readVariable
-						setVar:to:
-						setVar:to:
-				procDef
-						firstP
-						
+				whenGreenFlag
 				gotoX:y:
-						getAttribute:of:
-						getParam
-						getAttribute:of:
-						getParam
+				doForever
+						gotoX:y:
+						*
+						computeFunction:of:
+						readVariable
+				whenKeyPressed
+				hide
+				whenKeyPressed
+				show
 				penSize:
 						getParam
 				putPenDown
@@ -208,191 +393,6 @@
 				call
 				call
 				call
-		<<Object P1>>
-				whenKeyPressed
-				show
-				whenKeyPressed
-				hide
-				whenGreenFlag
-				gotoX:y:
-		<<Object P2>>
-				whenGreenFlag
-				gotoX:y:
-				whenKeyPressed
-				hide
-				whenKeyPressed
-				show
-		<<Object 1_2>>
-				whenGreenFlag
-				gotoX:y:
-				doForever
-						gotoX:y:
-						*
-				doForever
-						gotoX:y:
-						*
-						computeFunction:of:
-						readVariable
-				changeVar:by:
-				whenKeyPressed
-				hide
-				whenKeyPressed
-				show
-						computeFunction:of:
-						readVariable
-				whenKeyPressed
-				hide
-				whenKeyPressed
-				show
-		<<Object 3_3'>>
-				whenGreenFlag
-				gotoX:y:
-				setVar:to:
-		<<Object 6_6'2>>
-				whenKeyPressed
-				hide
-				whenKeyPressed
-				show
-				whenGreenFlag
-				gotoX:y:
-		<<Object P12>>
-				whenGreenFlag
-				gotoX:y:
-				whenKeyPressed
-				hide
-				whenKeyPressed
-				show
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-		<<Object P9>>
-				whenGreenFlag
-				gotoX:y:
-				whenKeyPressed
-				hide
-				whenKeyPressed
-				show
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-		<<Object P8>>
-				whenGreenFlag
-				gotoX:y:
-				whenKeyPressed
-				hide
-				whenKeyPressed
-				show
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-		<<Object P10>>
-				whenGreenFlag
-				gotoX:y:
-				whenKeyPressed
-				hide
-				whenKeyPressed
-				show
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-		<<Object P7>>
-				whenGreenFlag
-				gotoX:y:
-				whenKeyPressed
-				hide
-				whenKeyPressed
-				show
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-		<<Object 9_10>>
-				whenKeyPressed
-				hide
-				whenKeyPressed
-				show
-				whenGreenFlag
-				gotoX:y:
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-		<<Object 7_8>>
-				whenGreenFlag
-				gotoX:y:
-				whenKeyPressed
-				show
-				whenKeyPressed
-				hide
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-		<<Object e1>>
-				whenGreenFlag
-				gotoX:y:
-				heading:
-				turnRight:
 				setSizeTo:
 				whenIReceive
 				heading:

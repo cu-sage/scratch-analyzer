@@ -332,149 +332,6 @@
 				glideSecs:toX:y:elapsed:from:
 						readVariable
 		<<Object P7>>
-				whenGreenFlag
-				gotoX:y:
-				whenKeyPressed
-				hide
-				whenKeyPressed
-				show
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-		<<Object 9_10>>
-				whenKeyPressed
-				hide
-				whenKeyPressed
-				show
-				whenGreenFlag
-				gotoX:y:
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-		<<Object 7_8>>
-				whenGreenFlag
-				gotoX:y:
-				whenKeyPressed
-				show
-				whenKeyPressed
-				hide
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-		<<Object e1>>
-				whenGreenFlag
-				gotoX:y:
-				heading:
-				turnRight:
-				setSizeTo:
-				whenIReceive
-				heading:
-				turnRight:
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				heading:
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				heading:
-				turnRight:
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				heading:
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				heading:
-				turnRight:
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				heading:
-				turnRight:
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-		<<Object P6'>>
-				whenKeyPressed
-				hide
-				whenKeyPressed
-				show
-				whenGreenFlag
-				gotoX:y:
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-		<<Object P4>>
-				whenKeyPressed
-				hide
-				whenKeyPressed
-				show
-				whenGreenFlag
-				gotoX:y:
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
 		<<Object P6>>
 				whenKeyPressed
 				hide
@@ -631,6 +488,13 @@
 				glideSecs:toX:y:elapsed:from:
 						readVariable
 				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
+						readVariable
+				whenIReceive
+				glideSecs:toX:y:elapsed:from:
 						readVariable
 				whenIReceive
 				glideSecs:toX:y:elapsed:from:

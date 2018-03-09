@@ -20,6 +20,15 @@
 				doBroadcastAndWait
 				wait:elapsed:from:
 				setVar:to:
+				doBroadcastAndWait
+				wait:elapsed:from:
+				setVar:to:
+				doBroadcastAndWait
+				wait:elapsed:from:
+				setVar:to:
+				doBroadcastAndWait
+		<<Object Sprite1>>
+				whenGreenFlag
 				gotoX:y:
 				setGraphicEffect:to:
 				clearPenTrails
@@ -517,53 +526,6 @@
 				glideSecs:toX:y:elapsed:from:
 						readVariable
 		<<Object 6_6'>>
-				whenKeyPressed
-				hide
-				whenKeyPressed
-				show
-				whenGreenFlag
-				gotoX:y:
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-		<<Object P3>>
-				whenGreenFlag
-				gotoX:y:
-				whenKeyPressed
-				hide
-				whenKeyPressed
-				show
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-		<<Object P3'>>
-				whenGreenFlag
-				gotoX:y:
-				whenKeyPressed
-				hide
-				whenKeyPressed
-				show
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
-				whenIReceive
-				glideSecs:toX:y:elapsed:from:
-						readVariable
 		<<Object P11>>
 				whenGreenFlag
 				gotoX:y:
