@@ -51,7 +51,7 @@ def convert_se_to_csv_diff(file_path, student_type, student_id):
     except OSError as e:
         print(e)
 
-    df.to_csv("csv_file/differential/success/" + str(student_type) + "/output" + str(student_id) + ".csv", sep = '\t')
+    df.to_csv("csv_file/differential/success/" + str(student_type) + "/output" + str(student_id) + ".csv")
 
 
 def convert_se_to_csv(file_path, student_type, student_id):
