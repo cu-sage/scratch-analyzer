@@ -1,15 +1,8 @@
-import hashlib
 import pandas as pd
 import random
 import glob
 import os
-import numpy as np
-import shutil
-
-
-# Hash string into 8 digits numbers
-def string2numeric_hash(text):
-    return int(hashlib.md5(text).hexdigest()[:8], 16)
+from util import *
 
 
 def read_se(input_file):
@@ -21,34 +14,51 @@ def read_se(input_file):
         line = line.strip('\t\n ')
         if (line == "" or line[0] == '<'):
             continue
-        output_content.append(operation[line])
+        try:
+            output_content.append(operation[line])
+        except KeyError as e:
+            print(e)
 
     return output_content
 
 
-# Convert se file to csv file
-def convert_se_to_csv_diff(directory, student_type, student_id):
+def convert_se_to_csv_diff(file_path, student_type, student_id):
+    '''
+    Convert se file to csv file. 1 represent append operation, -1 represent delete operation
+    :param file_path:
+    :param student_type:
+    :param student_id:
+    :return:
+    '''
     diff = []
-    n = len(glob.glob(directory + '/*.se'))
+    n = len(glob.glob(file_path + '/*.se'))
     print(glob.glob('*.se'))
-    for i in range(1, n):
-        list1 = read_se(os.path.join(directory, str(i-1) + ".se"))
-        list2 = read_se(os.path.join(directory, str(i) + ".se"))
-        diff.append(list(set(list2) - set(list1)))
-    df = pd.DataFrame({'diff': diff})
-    print(df)
+    one_hot_data = np.zeros((n - 1, len(operation)))
+    for i in range(n - 1):
+        list1 = read_se(os.path.join(file_path, str(i) + ".se"))
+        list2 = read_se(os.path.join(file_path, str(i + 1) + ".se"))
+        operations_append = list(set(list2) - set(list1))
+        operations_delete = list(set(list1) - set(list2))
+        for opt in operations_append:
+            one_hot_data[i][opt] = 1
+        for opt in operations_delete:
+            one_hot_data[i][opt] = -1
+
+    one_hot_data = one_hot_data.astype(int)
+    df = pd.DataFrame(one_hot_data)
     try:
-        os.mkdir("csv_file/diff/" + str(student_type))
+        os.mkdir("csv_file/differential/success/" + str(student_type))
     except OSError as e:
         print(e)
 
-    df.to_csv("csv_file/" + str(student_type) + "/" + str(student_id) + "output1.csv")
+    df.to_csv("csv_file/differential/success/" + str(student_type) + "/output" + str(student_id) + ".csv", sep = '\t')
 
-def convert_se_to_csv(directory, student_type, student_id):
+
+def convert_se_to_csv(file_path, student_type, student_id):
     diff = []
-    n = len(glob.glob(directory + '/*.se'))
+    n = len(glob.glob(file_path + '/*.se'))
     for i in range(n):
-        list2 = read_se(os.path.join(directory, str(i) + ".se"))
+        list2 = read_se(os.path.join(file_path, str(i) + ".se"))
         diff.append(list2)
     df = pd.DataFrame({'operation': diff})
 
@@ -77,17 +87,7 @@ def generate_mock_se_success(input_file, n):
     with open("completeSE/" + input_file, encoding='utf-8') as f:
         content = f.readlines()
 
-    blocks = []
-    prev = 0
-    index = 0
-    for i in range(len(content)):
-        if count_indent(content[i]) == 2 and content[i].lstrip()[0] == '<':
-            index += 1
-            if index == 1:
-                prev = i
-                continue
-            blocks.append((prev + 1, i))
-            prev = i
+    blocks = calculate_blocks(content)
     # the beginning block
     begin = random.randint(1, len(blocks) - 5)
     old_index = list(range(begin, begin + 5))
@@ -109,22 +109,10 @@ def generate_mock_se_failure(input_file, n):
     with open("completeSE/" + input_file, encoding='utf-8') as f:
         content = f.readlines()
 
-    blocks = []
-    prev = 0
-    index = 0
-    for i in range(len(content)):
-        if count_indent(content[i]) == 2 and content[i].lstrip()[0] == '<':
-            index += 1
-            if index == 1:
-                prev = i
-                continue
-            blocks.append((prev + 1, i))
-            prev = i
+    blocks = calculate_blocks(content)
     # the beginning block
     begin = random.randint(1, len(blocks) - 5)
     l = random.randint(1, 5)
-    print(blocks)
-    print(begin)
 
     # delete the blocks between begin, begin + l
     del content[blocks[begin][0]:blocks[begin + l][1]]
@@ -135,15 +123,27 @@ def generate_mock_se_failure(input_file, n):
 
 
 def count_indent(line):
+    '''
+    Count indentation in front of the line
+    :param line:
+    :return:
+    '''
     count = 0
     for i in range(len(line)):
         if line[i] == '\t':
             count += 1
     return count
 
+
 def read_operation(opt_file):
+    '''
+    Read all the operation dict from file
+    :param opt_file: operation file
+    :return: dict
+    '''
     df = pd.read_csv(opt_file, index_col="operation")
     return df.to_dict()['Unnamed: 0']
+
 
 if __name__ == "__main__":
     # read_se("sage-frontend/machine_learning/sample_data/0/CTG-22.se")
@@ -159,4 +159,4 @@ if __name__ == "__main__":
 
     for i in range(1, 5):
         for j in range(25):
-            convert_se_to_csv("../../mockData/failure/" + str(i) + "/" + str(j) + "/", i, j)
+            convert_se_to_csv_diff("../../mockData/success/" + str(i) + "/" + str(j) + "/", i, j)
