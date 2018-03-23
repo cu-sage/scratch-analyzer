@@ -57,17 +57,21 @@ def convert_se_to_csv_diff(file_path, student_type, student_id):
 def convert_se_to_csv(file_path, student_type, student_id):
     diff = []
     n = len(glob.glob(file_path + '/*.se'))
+    one_hot_data = np.zeros((n, len(operation)))
     for i in range(n):
         list2 = read_se(os.path.join(file_path, str(i) + ".se"))
-        diff.append(list2)
-    df = pd.DataFrame({'operation': diff})
+        for opt in list2:
+            one_hot_data[i][opt] = 1
+
+    one_hot_data = one_hot_data.astype(int)
+    df = pd.DataFrame(one_hot_data)
 
     try:
-        os.mkdir("csv_file/operation/failure/" + str(student_type))
+        os.mkdir("csv_file/original/success/" + str(student_type))
     except OSError as e:
         print(e)
 
-    df.to_csv("csv_file/operation/failure/" + str(student_type) + "/output" + str(student_id) + ".csv")
+    df.to_csv("csv_file/original/success/" + str(student_type) + "/output" + str(student_id) + ".csv")
 
 
 # List all the operations exists in completeSE, and save them into operations.csv
@@ -159,4 +163,4 @@ if __name__ == "__main__":
 
     for i in range(1, 5):
         for j in range(25):
-            convert_se_to_csv_diff("../../mockData/success/" + str(i) + "/" + str(j) + "/", i, j)
+            convert_se_to_csv("../../mockData/success/" + str(i) + "/" + str(j) + "/", i, j)
