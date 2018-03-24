@@ -61,7 +61,7 @@ def convert_se_to_csv(file_path, student_type, student_id):
     for i in range(n):
         list2 = read_se(os.path.join(file_path, str(i) + ".se"))
         for opt in list2:
-            one_hot_data[i][opt] = 1
+            one_hot_data[i][opt] += 1
 
     one_hot_data = one_hot_data.astype(int)
     df = pd.DataFrame(one_hot_data)

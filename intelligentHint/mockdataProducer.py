@@ -3,9 +3,9 @@ import shutil
 import random
 from util import *
 
+
 def write_to_file(file_name, content_idx, content):
     '''
-
     :param file_name:
     :param content_idx:
     :param content:
@@ -18,6 +18,7 @@ def write_to_file(file_name, content_idx, content):
     ouf = open(file_name, 'w')
     ouf.writelines(new_content)
     ouf.close()
+
 
 def mover(file_path, content):
     if not os.path.isdir(file_path):
