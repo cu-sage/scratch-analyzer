@@ -1,0 +1,78 @@
+apply plugin: 'java'
+sourceSets {
+    utils {
+        java {
+            srcDirs = ['src/utils']
+        }
+    }
+}
+dependencies {
+    runtime fileTree(dir: 'FilesRequired', include: ['*.jar'])
+}
+
+task compileStatisticalData (type: JavaCompile) {
+    source = sourceSets.utils.java.srcDirs
+    include 'StatisticalData.java'
+    classpath = sourceSets.utils.compileClasspath
+    destinationDir = file('bin')
+}
+
+task createOutputDirs {
+    ['dispatched', 'extracted', 'extractedCSV', 'traversed'].each { dir ->
+        project.file('example_input_output/Output/TestOutput/'+dir).mkdirs()
+    }
+}
+
+task runScratchExtractor (type: JavaExec, dependsOn: ['compileStatisticalData', 'createOutputDirs']){
+    if(project.hasProperty('myargs')){
+        args(myargs.split(','))
+    } else {
+        args([
+                'example_input_output/Input/RegularInput',
+                'example_input_output/Output/TestOutput/extracted'
+        ])
+    }
+    description = "Run example scratch extractor"
+    main = "utils.ScratchExtractor"
+    classpath = files(fileTree(dir: 'FilesRequired', include: ['*.jar']) + file('bin'))
+}
+
+task runScratchDispatcher (type: JavaExec, dependsOn: ['compileStatisticalData', 'createOutputDirs', 'runScratchExtractor']){
+    if(project.hasProperty('myargs')){
+        args(myargs.split(','))
+    } else {
+        args([
+                'example_input_output/Output/TestOutput/extracted',
+                'example_input_output/Output/TestOutput/dispatched'
+        ])
+    }
+    description = "Run example ScratchDispatcher"
+    main = "utils.ScratchDispatcher"
+    classpath = files(fileTree(dir: 'FilesRequired', include: ['*.jar']) + file('bin'))
+}
+
+task runScratchTraverser (type: JavaExec, dependsOn: ['compileStatisticalData', 'createOutputDirs', 'runScratchExtractor']){
+    if(project.hasProperty('myargs')){
+        args(myargs.split(','))
+    } else {
+        args([
+                'example_input_output/Output/TestOutput/extracted',
+                'example_input_output/Output/TestOutput/traversed',
+                'traversed.cypher',
+                project.projectDir
+
+        ])
+    }
+    description = "Run example ScratchTraverser"
+    main = "utils.ScratchTraverser"
+    classpath = files(fileTree(dir: 'FilesRequired', include: ['*.jar']) + file('bin'))
+}
+
+task run {
+    dependsOn 'runScratchExtractor', 'runScratchDispatcher', 'runScratchTraverser'
+    doLast {
+        println 'scratch-analyzer built and examples run successfully'
+    }
+}
+
+defaultTasks 'runScratchExtractor', 'runScratchDispatcher', 'runScratchTraverser'
