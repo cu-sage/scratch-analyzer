@@ -1,0 +1,21 @@
+# Gradle
+# ------
+.gradle
+/build
+
+# macOS
+# ------
+.DS_Store
+
+# IDEA
+# ----
+.idea
+.shelf
+/*.iml
+/*.ipr
+/*.iws
+
+# scratch-analyzer examples
+# ------
+/example_input_output/Output/TestOutput
+/src/utils/StatisticalData.class
