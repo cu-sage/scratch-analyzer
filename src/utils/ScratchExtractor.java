@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.StringReader;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.DirectoryStream;
@@ -55,7 +56,33 @@ public class ScratchExtractor {
 		Files.createDirectories(scratchJsonDir);
 	}
 
-
+	/*
+	 * Only use this constructor for methods that do not rely on local file system:
+	 * extractJsonStr and jsonToSe.
+	 * yli - 11/2018
+	 */
+	public ScratchExtractor() throws IOException {
+		helper = new Helper();
+		blockList = helper.getBlockNames();
+	}
+	
+	/*
+	 * Parses JSON string to SE string.
+	 * yli - 11/2018
+	 */
+	public String jsonToSe(String jsonStr, boolean printId) {
+		int dummyUserId = 1;
+		String dummyProjectName = "project1";
+		String dummyTimeStamp = "now";
+		userTimeStampedProjects.clear();
+		extractJsonStr(jsonStr, dummyUserId, dummyProjectName, dummyTimeStamp, printId);
+		Iterator<Entry<Integer, TreeMap<String, ArrayList<Tree<Block>>>>> iterator = userTimeStampedProjects.entrySet().iterator();
+		Set<Entry<String, ArrayList<Tree<Block>>>> projectSet = userTimeStampedProjects.get(iterator.next().getKey()).entrySet();
+		Iterator<Entry<String, ArrayList<Tree<Block>>>> projectIterator  = projectSet.iterator();
+		Tree<Block> project = projectIterator.next().getValue().get(0);
+		return project.printTree(1);
+	}
+	
 	/*
 	 * Parses the json files if we want to analyze timeStamped projects
 	 */
@@ -170,12 +197,42 @@ public class ScratchExtractor {
 
 
 	/**
-	 * Parse JSON to build an in-memory representation of Scratch objects and blocks
+	 * Parse JSON file to build an in-memory representation of Scratch objects and blocks
 	 * Overloaded version of ExtractFile to incorporate the timeStamp
 	 */
 	protected void extractFile(Path jsonFile, int userID, String projectName, String timeStamp) {
 
 		try (BufferedReader reader = Files.newBufferedReader(jsonFile, StandardCharsets.UTF_8)) {
+			// Does not print block ID.
+			extractFile(reader, userID, projectName, timeStamp, false);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	/**
+	 * Parse JSON string to build an in-memory representation of Scratch objects and blocks
+	 * Overloaded version of ExtractFile to incorporate the timeStamp
+	 */
+	protected void extractJsonStr(String jsonStr, int userID, String projectName, String timeStamp, boolean printId) {
+
+		try (BufferedReader reader = new BufferedReader(new StringReader(jsonStr))) {
+			extractFile(reader, userID, projectName, timeStamp, printId);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	/**
+	 * Read JSON from the given BufferedReader and parse JSON to build an in-memory representation
+	 * of Scratch objects and blocks.
+	 * Overloaded version of ExtractFile to incorporate the timeStamp.
+	 * Method extracted from the original extractFile - yli 11/2018 
+	 * @param printId whether print the ID when print the block.
+	 */
+	protected void extractFile(BufferedReader reader, int userID, String projectName, String timeStamp, boolean printId) {
+
+		try {
 			Tree<Block> project = null;
 			String objName = null;
 			Block parentObject = null;
@@ -228,7 +285,7 @@ public class ScratchExtractor {
 					}
 					if (sOpen != 0 && sOpen == sClose)
 					{
-						addBlocksTimeStamped(project, parentBlock, objScript);
+						addBlocksTimeStamped(project, parentBlock, objScript, printId);
 						isInScript = false;
 					}
 				} 
@@ -237,20 +294,19 @@ public class ScratchExtractor {
 			reader.close();
 
 			if(project != null)
-				addProject(userID,timeStamp, project, projectName);
+				addProject(userID, timeStamp, project, projectName);
 
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-
 	/**
 	 * Parse and load into memory the blocks specified in JSON "Scripts:" sections
-	 * Modified to accommodate for block ID's
+	 * Modified to accommodate for block ID's.
+	 * @param printId whether print the ID when print the block.
 	 */
-
-	private void addBlocksTimeStamped(Tree<Block> project, Block parentBlock, StringBuilder objScript)
+	private void addBlocksTimeStamped(Tree<Block> project, Block parentBlock, StringBuilder objScript, boolean printId)
 	{
 		StringBuilder blockID = null;
 		StringBuilder blockName = null;
@@ -288,14 +344,14 @@ public class ScratchExtractor {
 				else
 					isPrimitive = false;
 				break;
-			case '\"': 
-
+			case '\"':
+				if (prevChar == O_SCOPE) {
+					++blockOpenCount;
+				}
 				blockID = new StringBuilder();
 				c = Character.toChars(iterator.next());
 				while(c[0] != '\"') {
-					if(c[0] !='\"') {
-						blockID.append(c[0]);
-					}
+					blockID.append(c[0]);
 					c = Character.toChars(iterator.next());
 				}
 
@@ -307,13 +363,12 @@ public class ScratchExtractor {
 					c = Character.toChars(iterator.next());
 
 					while(iterator.hasNext() && c[0]!='\"') {
-						if(c[0]!='\"')
-							blockName.append(c[0]);
+						blockName.append(c[0]);
 						c = Character.toChars(iterator.next());
 					}
 					if(blockList.contains(blockName.toString())) {
-						currentBlock = new Block(null,blockName.toString(),blockID.toString());
-						project.addLeaf(parentBlock,currentBlock);
+						currentBlock = new Block(null, blockName.toString(), blockID.toString(), printId);
+						project.addLeaf(parentBlock, currentBlock);
 						blockName = null;
 						blockID = null;
 					}

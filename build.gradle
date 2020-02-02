@@ -1,0 +1,132 @@
+apply plugin: 'java'
+apply plugin: 'checkstyle'
+
+checkstyle {
+    toolVersion "8.6"
+}
+
+sourceSets {
+    utils {
+        java {
+            srcDirs = ['src']
+        }
+    }
+    test {
+        java {
+            srcDirs = ['src/test']
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven {
+        url 'http://repository.jboss.org/nexus/content/groups/public'
+    }
+}
+
+test {
+    reports {
+        junitXml.enabled = true
+//        html.enabled = true
+    }
+}
+
+dependencies {
+    utilsCompile fileTree(dir: 'FilesRequired', include: ['*.jar'])
+    testCompile files('bin')
+    testCompile 'junit:junit:4.12'
+    utilsCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:2.10.+'
+    utilsCompile 'org.mockito:mockito-core:2.10.+'
+    testCompile 'org.powermock:powermock-core:2.0.+'
+    utilsCompile 'org.powermock:powermock-core:2.0.+'
+    testCompile 'org.powermock:powermock-module-junit4:2.0.+'
+    utilsCompile 'org.powermock:powermock-module-junit4:2.0.+'
+    testCompile 'org.powermock:powermock-api-mockito2:2.0.+'
+    utilsCompile 'org.powermock:powermock-api-mockito2:2.0.+'
+    compile 'org.springframework:spring-context:5.0.6.RELEASE'
+    testCompile "org.slf4j:slf4j-simple:1.7.10"
+    utilsCompile "org.slf4j:slf4j-simple:1.7.10"
+    testRuntime "org.slf4j:slf4j-api:1.7.10"
+}
+
+task compileStatisticalData (type: JavaCompile) {
+    source = sourceSets.utils.java.srcDirs
+    include 'utils/StatisticalData.java'
+    classpath = sourceSets.utils.compileClasspath
+    destinationDir = file('bin')
+}
+
+task createOutputDirs {
+    ['dispatched', 'extracted', 'extractedCSV', 'traversed'].each { dir ->
+        project.file('example_input_output/Output/TestOutput/'+dir).mkdirs()
+    }
+}
+
+task runScratchExtractor (type: JavaExec, dependsOn: ['compileStatisticalData', 'createOutputDirs']){
+    if(project.hasProperty('myargs')){
+        args(myargs.split(','))
+    } else {
+        args([
+                'example_input_output/Input/RegularInput',
+                'example_input_output/Output/TestOutput/extracted'
+        ])
+    }
+    description = "Run example scratch extractor"
+    main = "utils.ScratchExtractor"
+    classpath = files(fileTree(dir: 'FilesRequired', include: ['*.jar']) + file('bin'))
+}
+
+task runScratchDispatcher (type: JavaExec, dependsOn: ['compileStatisticalData', 'createOutputDirs', 'runScratchExtractor']){
+    if(project.hasProperty('myargs')){
+        args(myargs.split(','))
+    } else {
+        args([
+                'example_input_output/Output/TestOutput/extracted',
+                'example_input_output/Output/TestOutput/dispatched'
+        ])
+    }
+    description = "Run example ScratchDispatcher"
+    main = "utils.ScratchDispatcher"
+    classpath = files(fileTree(dir: 'FilesRequired', include: ['*.jar']) + file('bin'))
+}
+
+task runScratchTraverser (type: JavaExec, dependsOn: ['compileStatisticalData', 'createOutputDirs', 'runScratchExtractor']){
+    if(project.hasProperty('myargs')){
+        args(myargs.split(','))
+    } else {
+        args([
+                'example_input_output/Output/TestOutput/extracted',
+                'example_input_output/Output/TestOutput/traversed',
+                'traversed.cypher',
+                project.projectDir
+
+        ])
+    }
+    description = "Run example ScratchTraverser"
+    main = "utils.ScratchTraverser"
+    classpath = files(fileTree(dir: 'FilesRequired', include: ['*.jar']) + file('bin'))
+}
+
+task run {
+    dependsOn 'runScratchExtractor', 'runScratchDispatcher', 'runScratchTraverser'
+    doLast {
+        println 'scratch-analyzer built and examples run successfully'
+    }
+}
+
+defaultTasks 'runScratchExtractor', 'runScratchDispatcher', 'runScratchTraverser'
+//Cobertura integration
+buildscript {
+    repositories {
+        mavenCentral()
+        // The next repo is only needed while using SNAPSHOT versions
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+    }
+    dependencies {
+        classpath "net.saliman:gradle-cobertura-plugin:2.5.4"
+    }
+}
+apply plugin: 'net.saliman.cobertura'

@@ -1,0 +1,56 @@
+<<Object Stage>>
+		whenGreenFlag
+		startScene
+		<<Object Sprite1>>
+				whenGreenFlag
+				gotoX:y:
+				setGraphicEffect:to:
+				whenGreenFlag
+				hide
+		<<Object Sprite4>>
+				whenGreenFlag
+				show
+				whenClicked
+				broadcast:
+		<<Object ThumbnailFinal>>
+				whenGreenFlag
+				hide
+		<<Object Logo(1)>>
+				whenGreenFlag
+				hide
+		<<Object drawing-2>>
+				whenGreenFlag
+				hide
+		<<Object drawing-22>>
+				whenGreenFlag
+				hide
+		<<Object Sprite2>>
+				whenGreenFlag
+				show
+				gotoX:y:
+				whenIReceive
+				doRepeat
+						changeXposBy:
+						wait:elapsed:from:
+						changeXposBy:
+						wait:elapsed:from:
+				doRepeat
+						turnRight:
+		<<Object Sprite3>>
+				whenIReceive
+				doRepeat
+						changeXposBy:
+						wait:elapsed:from:
+						changeXposBy:
+						wait:elapsed:from:
+				doRepeat
+						changeGraphicEffect:by:
+				wait:elapsed:from:
+				lookLike:
+						randomFrom:to:
+				doRepeat
+						changeGraphicEffect:by:
+				whenGreenFlag
+				show
+				gotoX:y:
+				lookLike:

@@ -9,6 +9,7 @@ public class Block {
 	private String objName;
 	private String blockName;
 	private String id;
+	private boolean printId = false;
 	private static final String SE_OBJ_OPEN = "<<";
 	private static final String SE_OBJ_CLOSE = ">>";
 	
@@ -27,6 +28,13 @@ public class Block {
 		this.objName = objectName;
 		this.blockName = blockName;
 		this.id = id;
+	}
+	
+	public Block(String objectName, String blockName, String id, boolean printId) {
+		this.objName = objectName;
+		this.blockName = blockName;
+		this.id = id;
+		this.printId = printId;
 	}
 	
 	public void setId(String id) {
@@ -60,8 +68,10 @@ public class Block {
 		String value = "";
 		if(objName != null)
 			value += SE_OBJ_OPEN + "Object " + objName + SE_OBJ_CLOSE;
-		else
-			value += blockName;
+		else {
+			if (printId) value += id + ", ";
+			value += blockName;	
+		}
 		return value;
 	}
 }
